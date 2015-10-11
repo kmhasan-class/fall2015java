@@ -10,7 +10,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -19,17 +21,34 @@ import javafx.scene.control.Label;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    private Label label;
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private TextField displayField;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void handleTwoAction(ActionEvent event) {
+        String oldText = displayField.getText();
+        String newText = oldText + "2";
+        displayField.setText(newText);
+    }
+
+    @FXML
+    private void handleFourAction(ActionEvent event) {
+        String oldText = displayField.getText();
+        String newText = oldText + "4";
+        displayField.setText(newText);
+    }
+
+    @FXML
+    private void handleDigitAction(ActionEvent event) {
+        // Got to explain import, casting, objects
+        Button b = (Button) event.getSource();
+        String oldText = displayField.getText();
+        String newText = oldText + b.getText();
+        displayField.setText(newText);
+    }
     
 }
