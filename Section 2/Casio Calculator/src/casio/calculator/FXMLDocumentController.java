@@ -19,6 +19,8 @@ import javafx.scene.control.TextField;
  * @author kmhasan
  */
 public class FXMLDocumentController implements Initializable {
+    double number1;
+    String operation;
     
     @FXML
     private TextField displayField;
@@ -28,14 +30,12 @@ public class FXMLDocumentController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void handleTwoAction(ActionEvent event) {
         String oldText = displayField.getText();
         String newText = oldText + "2";
         displayField.setText(newText);
     }
 
-    @FXML
     private void handleFourAction(ActionEvent event) {
         String oldText = displayField.getText();
         String newText = oldText + "4";
@@ -44,11 +44,38 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleDigitAction(ActionEvent event) {
-        // Got to explain import, casting, objects
         Button b = (Button) event.getSource();
         String oldText = displayField.getText();
         String newText = oldText + b.getText();
         displayField.setText(newText);
+    }
+
+    @FXML
+    private void handleAddAction(ActionEvent event) {
+        String oldText = displayField.getText();
+        number1 = Double.parseDouble(oldText);
+        operation = "ADD";
+        displayField.setText("");
+    }
+
+    @FXML
+    private void handleEqualAction(ActionEvent event) {
+        String oldText = displayField.getText();
+        double number2 = Double.parseDouble(oldText);
+        double result = 0.0;
+        if (operation == "ADD")
+            result = number1 + number2;
+        else if (operation == "SUB")
+            result = number1 - number2;
+        displayField.setText("" + result);
+    }
+
+    @FXML
+    private void handleSubtractAction(ActionEvent event) {
+        String oldText = displayField.getText();
+        number1 = Double.parseDouble(oldText);
+        operation = "SUB";
+        displayField.setText("");
     }
     
 }
