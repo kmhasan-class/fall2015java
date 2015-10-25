@@ -1,0 +1,12 @@
+321
+Lipstick
+Cosmetics
+700.0
+422
+Scrapbook
+Stationery
+200.0
+478
+Stapler
+Stationery
+150.0
