@@ -32,6 +32,10 @@ public class StudentDemo {
         students[3].addGrade("F", 1.0);
         students[3].addGrade("D", 3.0);
         students[1].addGrade("F", 3.0);
+//        IDComparator idComparator = new IDComparator();
+        CGPAComparator cgpaComparator = new CGPAComparator();
+//        Arrays.sort(students, idComparator);
+        Arrays.sort(students, cgpaComparator);
         for (int i = 0; i < 5; i++)
             System.out.printf("%s\n", students[i].toString());
         
