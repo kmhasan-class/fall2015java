@@ -44,8 +44,13 @@ public class StudentDemo {
         students[5].addGrade("C", 3);
         students[5].addGrade("B-", 3);
         students[3].addGrade("C+", 3);
+        
+        CGPAComparator cgpaComparator = new CGPAComparator();
+        Arrays.sort(students, cgpaComparator);
+//        IDComparator idComparator = new IDComparator();
+//        Arrays.sort(students, idComparator);
+        
         for (int i = 0; i < students.length; i++)
-//            System.out.printf("%d %s %f\n", students[i].getId(), students[i].getName(), students[i].getCGPA());
             System.out.printf("%s\n", students[i]);
         
         int intArray[] = new int[4];
