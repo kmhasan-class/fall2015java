@@ -15,10 +15,14 @@ public class Lab5a {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Number a = new ComplexNumber(4, 5);
-        Number b = new ComplexNumber(3, 2);
-        Number c = a.add(b);
-        System.out.printf("%s\n", c);
+        Number a = new ComplexNumber(3, 2);
+        Number b = new ComplexNumber(4, -3);
+        Number c = a.multiply(b);
+        
+        Number x = new RationalNumber(3, 4);
+        Number y = new RationalNumber(8, 5);
+        Number z = x.add(y);
+        System.out.printf("%s\n", z);
     }
     
 }

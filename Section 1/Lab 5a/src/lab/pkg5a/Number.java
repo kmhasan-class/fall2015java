@@ -14,4 +14,12 @@ public class Number {
         return null;
     }
 
+    public Number subtract(Number b) {
+        return null;
+    }
+
+    public Number multiply(Number b) {
+        return null;
+    }
+
 }

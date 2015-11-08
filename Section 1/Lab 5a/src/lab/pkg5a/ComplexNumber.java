@@ -35,8 +35,30 @@ public class ComplexNumber extends Number {
         ComplexNumber z = new ComplexNumber(real, imaginary);
         return z;
     }
+
+    @Override
+    public Number subtract(Number b) {
+        ComplexNumber x = this;
+        ComplexNumber y = (ComplexNumber) b;
+        double real = x.real - y.real;
+        double imaginary = x.imaginary - y.imaginary;
+        ComplexNumber z = new ComplexNumber(real, imaginary);
+        return z;
+    }
+
+    @Override
+    public Number multiply(Number b) {
+        ComplexNumber x = this;
+        ComplexNumber y = (ComplexNumber) b;
+        double real = x.real * y.real - x.imaginary * y.imaginary;
+        double imaginary = x.real * y.imaginary + y.real * x.imaginary;
+        ComplexNumber z = new ComplexNumber(real, imaginary);
+        return z;
+    }
     
     public String toString() {
-        return real + " + " + imaginary + " * i";
+        if (imaginary < 0)
+            return real + " - " + (-imaginary) + " * i";
+        else return real + " + " + imaginary + " * i";
     }
 }
