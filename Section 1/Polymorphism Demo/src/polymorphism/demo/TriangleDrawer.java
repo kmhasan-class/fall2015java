@@ -9,7 +9,7 @@ package polymorphism.demo;
  *
  * @author kmhasan
  */
-public class TriangleDrawer extends ShapeDrawer {
+public class TriangleDrawer extends ShapeDrawer implements NamePrinter {
     private int rows;
 
     public TriangleDrawer(int rows) {
@@ -22,10 +22,16 @@ public class TriangleDrawer extends ShapeDrawer {
     
     @Override
     public void draw() {
+        printName();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j <= i; j++)
                 System.out.printf("*");
             System.out.printf("\n");
         }
+    }
+
+    @Override
+    public void printName() {
+        System.out.printf("Triangle\n");
     }
 }
