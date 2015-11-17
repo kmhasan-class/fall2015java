@@ -7,6 +7,7 @@ package database.console.demo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -31,7 +32,15 @@ public class DatabaseConsoleDemo {
             Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             System.out.println("Connection Succeeded");
             Statement statement = connection.createStatement();
-            statement.executeUpdate(query);
+//            statement.executeUpdate(query);
+            
+            query = "select * from FoodItem";
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String itemName = resultSet.getString("itemName");
+                double price = resultSet.getDouble("price");
+                System.out.printf("%s %f\n", itemName, price);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseConsoleDemo.class.getName()).log(Level.SEVERE, null, ex);
         }
