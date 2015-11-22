@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -40,6 +41,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ListView<FoodItem> itemList;
     private ObservableList<FoodItem> items;
+    @FXML
+    private TableColumn<FoodItem, String> categoryColumn;
+    @FXML
+    private TableColumn<FoodItem, Number> priceColumn;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -49,6 +54,8 @@ public class FXMLDocumentController implements Initializable {
         
         itemNameColumn.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getItemName()));
         itemCodeColumn.setCellValueFactory(d -> new SimpleIntegerProperty(d.getValue().getItemCode()));
+        categoryColumn.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getCategory()));
+        priceColumn.setCellValueFactory(d -> new SimpleDoubleProperty(d.getValue().getPrice()));
         
         String DB_USER = "cse2015fall2015";
         String DB_PASS = "fall2015";

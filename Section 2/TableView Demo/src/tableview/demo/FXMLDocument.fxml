@@ -6,14 +6,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="285.0" prefWidth="499.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="tableview.demo.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="285.0" prefWidth="777.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="tableview.demo.FXMLDocumentController">
    <children>
       <HBox layoutX="14.0" layoutY="14.0" maxHeight="1.7976931348623157E308" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
-            <TableView fx:id="itemTable" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="itemTable" prefHeight="265.0" prefWidth="558.0">
               <columns>
-                <TableColumn fx:id="itemCodeColumn" prefWidth="75.0" text="Item Code" />
-                <TableColumn fx:id="itemNameColumn" prefWidth="75.0" text="Item Name" />
+                <TableColumn fx:id="itemCodeColumn" prefWidth="90.0" text="Item Code" />
+                <TableColumn fx:id="itemNameColumn" prefWidth="245.0" text="Item Name" />
+                  <TableColumn fx:id="categoryColumn" minWidth="0.0" prefWidth="126.0" text="Category" />
+                  <TableColumn fx:id="priceColumn" prefWidth="96.0" text="Price" />
               </columns>
             </TableView>
             <ListView fx:id="itemList" prefHeight="200.0" prefWidth="200.0" />
