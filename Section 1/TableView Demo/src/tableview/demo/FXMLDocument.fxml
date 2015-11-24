@@ -11,7 +11,7 @@
       <HBox layoutX="34.0" layoutY="44.0" prefHeight="200.0" prefWidth="383.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <ListView fx:id="itemList" prefHeight="371.0" prefWidth="262.0" />
-            <TableView fx:id="itemTable" prefHeight="371.0" prefWidth="411.0">
+            <TableView fx:id="itemTable" onMouseClicked="#handleMouseClickAction" prefHeight="371.0" prefWidth="411.0">
               <columns>
                 <TableColumn fx:id="itemNameColumn" prefWidth="257.0" text="Item Name" />
                 <TableColumn fx:id="itemPriceColumn" prefWidth="138.5" text="Price" />

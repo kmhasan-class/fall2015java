@@ -26,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -74,12 +75,20 @@ public class FXMLDocumentController implements Initializable {
 //                System.out.printf("%s %f\n", name, price);
             }
             
-            for (FoodItem item: items)
-                System.out.printf("%s\n", item);
+//            for (FoodItem item: items)
+//                System.out.printf("%s\n", item);
             
         } catch (SQLException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
+
+    @FXML
+    private void handleMouseClickAction(MouseEvent event) {
+        int index = itemTable.getSelectionModel().getSelectedIndex();
+        System.out.printf("%s\n", items.get(index));
+        items.remove(index);
+//        FoodItem item = itemTable.getSelectionModel().getSelectedItem();
+    }
     
 }
