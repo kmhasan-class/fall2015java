@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="429.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="animation.demo.FXMLDocumentController">
+   <children>
+      <VBox prefHeight="426.0" prefWidth="429.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="200.0" prefWidth="429.0">
+               <children>
+                  <Label text="Current Time: " />
+                  <TextField fx:id="timeField" />
+                  <Button mnemonicParsing="false" onAction="#handleStopAction" text="Stop" />
+                  <Button mnemonicParsing="false" onAction="#handleStartAction" text="Start" />
+               </children>
+            </HBox>
+            <Canvas fx:id="clockCanvas" height="400.0" width="400.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
