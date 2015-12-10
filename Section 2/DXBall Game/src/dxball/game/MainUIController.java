@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -82,6 +83,8 @@ public class MainUIController implements Initializable {
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(dt), event -> {
             gc.setFill(Color.WHITE);
             gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+            Image image = new Image("/face_front.jpg", 600, 600, false, true);
+            gc.drawImage(image, 100, 100);
             // draw the walls
             gc.strokeRect(0, 0, canvas.getWidth(), canvas.getHeight());
             // draw the ball
@@ -116,7 +119,6 @@ public class MainUIController implements Initializable {
             double d = Math.sqrt(dx*dx + dy*dy);
             double r1 = ball1Radius;
             double r2 = ball2Radius;
-            
             if (r1 + r2 >= d && isVisible1 && isVisible2) {
                 double tX = v1X;
                 double tY = v1Y;
