@@ -28,10 +28,12 @@ public class Client {
             String message;
             
             BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-            message = stdin.readLine();
-            
-            out.write(message.getBytes());
-            out.flush();
+            while ((message = stdin.readLine()) != null) {
+                if (message.equals("exit"))
+                    break;
+                out.write(message.getBytes());
+                out.flush();
+            }
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }

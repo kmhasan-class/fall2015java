@@ -17,20 +17,25 @@ import java.util.logging.Logger;
  * @author kmhasan
  */
 public class Server {
+
     public Server() {
         try {
             ServerSocket serverSocket = new ServerSocket(3668);
             System.out.printf("Server running on port 3668\n");
-            
+
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.printf("Connected with client %s\n", socket);
-                
+
                 InputStream in = socket.getInputStream();
                 byte messageBytes[] = new byte[70];
-                in.read(messageBytes);
-                String message = new String(messageBytes);
-                System.out.printf("Received [%s]\n", message);
+                while (true) {
+                    int bytesRead = in.read(messageBytes);
+                    if (bytesRead < 0)
+                        break;
+                    String message = new String(messageBytes);
+                    System.out.printf("Received [%s]\n", message);
+                }
             }
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
