@@ -27,9 +27,14 @@ public class Server {
                 System.out.printf("Connected with %s\n", socket);
                 InputStream in = socket.getInputStream();
                 byte messageBytes[] = new byte[1000];
-                in.read(messageBytes);
-                String message = new String(messageBytes);
-                System.out.printf("Received [%s]\n", message);
+
+                while (true) {
+                    int bytesRead = in.read(messageBytes);
+                    if (bytesRead == -1)
+                        break;
+                    String message = new String(messageBytes);
+                    System.out.printf("[%s:] %s\n", socket.getInetAddress(), message.substring(0, bytesRead));
+                }
             }
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);

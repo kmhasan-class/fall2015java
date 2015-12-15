@@ -27,6 +27,8 @@ public class Client {
             
             BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
             while ((message = stdin.readLine()) != null) {
+                if (message.equals("exit"))
+                    break;
                 out.write(message.getBytes());
                 out.flush();
             }
