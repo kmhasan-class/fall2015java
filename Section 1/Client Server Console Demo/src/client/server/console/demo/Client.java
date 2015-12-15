@@ -5,7 +5,9 @@
  */
 package client.server.console.demo;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -21,7 +23,10 @@ public class Client {
             Socket socket = new Socket("172.17.0.119", 3867);
             System.out.printf("My client connected with the server\n");
             OutputStream out = socket.getOutputStream();
-            String message = "Hello World\n";
+            String message;
+            
+            BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
+            message = stdin.readLine();
             out.write(message.getBytes());
             out.flush();
         } catch (IOException ex) {
