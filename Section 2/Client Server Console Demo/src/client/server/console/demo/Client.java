@@ -5,7 +5,9 @@
  */
 package client.server.console.demo;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -22,8 +24,12 @@ public class Client {
             System.out.printf("Connected with the server\n");
             
             OutputStream out = socket.getOutputStream();
-            String message = "ja khushi";
-            // NEED TO TALK ABOUT UNICODE AND BYTES
+//            String message = "ja khushi";
+            String message;
+            
+            BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
+            message = stdin.readLine();
+            
             out.write(message.getBytes());
             out.flush();
         } catch (IOException ex) {

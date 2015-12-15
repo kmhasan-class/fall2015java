@@ -6,6 +6,7 @@
 package client.server.console.demo;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -24,6 +25,12 @@ public class Server {
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.printf("Connected with client %s\n", socket);
+                
+                InputStream in = socket.getInputStream();
+                byte messageBytes[] = new byte[70];
+                in.read(messageBytes);
+                String message = new String(messageBytes);
+                System.out.printf("Received [%s]\n", message);
             }
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
