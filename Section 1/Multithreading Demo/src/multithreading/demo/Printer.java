@@ -9,7 +9,7 @@ package multithreading.demo;
  *
  * @author kmhasan
  */
-public class Printer {
+public class Printer implements Runnable {
     private String prefix;
     
     public Printer(String prefix) {
@@ -19,5 +19,10 @@ public class Printer {
     public void print() {
         for (int i = 0; i < 10000; i++)
             System.out.printf("%s %4d\n", prefix, i);
+    }
+    
+    @Override
+    public void run() {
+        print();
     }
 }
