@@ -15,7 +15,8 @@ public class MultithreadedChatServer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+//        Client client = new Client();
+        Server server = new Server();
     }
     
 }

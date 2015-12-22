@@ -31,7 +31,7 @@ public class Client {
         
         try {
             username = "John Doe";
-            socket = new Socket(SERVER_ADDRESS, 9867);
+            socket = new Socket(SERVER_ADDRESS, PORT_NUMBER);
             out = socket.getOutputStream();
             message = "/USERNAME:" + username;
             out.write(message.getBytes());

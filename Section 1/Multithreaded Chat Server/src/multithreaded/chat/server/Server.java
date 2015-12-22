@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,22 +28,33 @@ public class Server {
         InputStream in;
         byte messageBytes[];
         String message;
+        String username;
+        Date date;
         int bytesRead;
 
         try {
             serverSocket = new ServerSocket(PORT_NUMBER);
+            System.out.printf("Chat server running on port: %d\n", PORT_NUMBER);
             while (true) {
                 socket = serverSocket.accept();
+                System.out.printf("Accepted connection from %s\n", socket.getInetAddress());
+                
                 in = socket.getInputStream();
                 messageBytes = new byte[MAX_MSG_LENGTH];
-                while (true) {
-                    bytesRead = in.read(messageBytes);
-                    if (bytesRead < 0) {
-                        break;
-                    }
-                    message = new String(messageBytes).substring(0, bytesRead);
-                    System.out.printf("%s\n", message);
+                
+                bytesRead = in.read(messageBytes);
+                message = new String(messageBytes).substring(0, bytesRead);
+                String tokens[] = message.split("\\:");
+                if (!tokens[0].equals("/USERNAME")) {
+                    System.err.printf("Client did not provide username\n");
+                    continue;
                 }
+                
+                username = tokens[1];
+                System.out.printf("Username: [%s]\n", username);
+                ThreadedServer threadedServer = new ThreadedServer(in, username);
+                Thread thread = new Thread(threadedServer);
+                thread.start();
             }
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
